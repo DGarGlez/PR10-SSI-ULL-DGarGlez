@@ -1,7 +1,7 @@
-#include <iostream>     // Para entrada/salida estándar (cout, cin)
-#include <vector>       // Para usar la estructura de datos vector
+#include <iostream>
+#include <vector>
 
-using namespace std;    // Para evitar usar std:: en cada línea
+using namespace std;
 
 // Estructura que representa un punto en la curva elíptica
 struct Point {
@@ -71,7 +71,7 @@ Point scalarMult(Point P, int n) {
     Point R(0, 0, true); // Inicializa en el punto en el infinito (identidad aditiva)
     while (n > 0) {
         if (n % 2 == 1) // Si el bit menos significativo de n es 1
-            R = pointAdd(R, P); // Si el bit es 1, suma P a R
+            R = pointAdd(R, P); // Suma P a R
         P = pointAdd(P, P);     // Doble de P
         n /= 2;               // Desplaza n a la derecha (divide por 2)
     }
@@ -133,7 +133,10 @@ int main() {
     cin >> m;
 
     // Parámetros de codificación
-    int M = 4;          // Número máximo de mensajes posibles
+    int M = 1; // Inicializa M
+    while(m > M) {
+        M *= 2; // Aumenta M a la siguiente potencia de 2
+    } 
     int h = p / M;      // Constante para codificar mensajes como puntos
 
     cout << "\n----------------------------------------- RESULTADOS -----------------------------------------\n";
